@@ -329,6 +329,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  dotenv
   jbuilder
   jsbundling-rails
   kamal
