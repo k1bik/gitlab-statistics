@@ -1,0 +1,14 @@
+<% members.each do |member| %>
+  <div><%= member.name %></div>
+  <img src=<%= member.avatar_url %> alt=<%= member.name %>>
+<% end %>
+
+<div>
+  <% if pagination.prev_page %>
+    <%= link_to pagination.prev_page, config_project_members_path(config, params[:project_id], page: pagination.prev_page) %>
+  <% end %>
+
+  <% if pagination.next_page %>
+    <%= link_to pagination.next_page, config_project_members_path(config, params[:project_id], page: pagination.next_page) %>
+  <% end %>
+</div>

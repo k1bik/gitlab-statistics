@@ -11,5 +11,9 @@ module Api
     def body
       @response.body
     end
+
+    def raw
+      @response
+    end
   end
 end

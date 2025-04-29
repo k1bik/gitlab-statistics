@@ -11,13 +11,10 @@ module Api
     validates :domain, presence: true
     validates :token, presence: true
 
-    def get(path, params: nil)
+    def get(path, **params)
       url = get_url(path)
       uri = URI(url)
-
-      if params
-        uri.query = URI.encode_www_form(params)
-      end
+      uri.query = URI.encode_www_form(params.merge(access_token: token))
 
       Response.new(Net::HTTP.get_response(uri))
     end
@@ -25,7 +22,7 @@ module Api
     private
 
     def get_url(path)
-      "#{domain}#{path}?access_token=#{token}"
+      "#{domain}#{path}"
     end
   end
 end

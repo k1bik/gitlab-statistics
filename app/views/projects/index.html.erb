@@ -1,0 +1,16 @@
+<% projects.each do |project| %>
+  <div>
+    <%= link_to project.name, config_project_path(config, project.id) %>
+    <%= link_to "GitLab", project.url %>
+  </div>
+<% end %>
+
+<div>
+  <% if pagination.prev_page %>
+    <%= link_to pagination.prev_page, config_projects_path(config, page: pagination.prev_page) %>
+  <% end %>
+
+  <% if pagination.next_page %>
+    <%= link_to pagination.next_page, config_projects_path(config, page: pagination.next_page) %>
+  <% end %>
+</div>
