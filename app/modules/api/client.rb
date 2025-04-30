@@ -12,17 +12,29 @@ module Api
     validates :token, presence: true
 
     def get(path, **params)
-      url = get_url(path)
-      uri = URI(url)
-      uri.query = URI.encode_www_form(params.merge(access_token: token))
-
-      Response.new(Net::HTTP.get_response(uri))
+      uri = build_uri(path, params)
+      request = Net::HTTP::Get.new(uri)
+      execute_request(request)
     end
 
     private
 
-    def get_url(path)
-      "#{domain}#{path}"
+    def build_uri(path, params)
+      url = "#{domain}#{path}"
+      uri = URI(url)
+      uri.query = URI.encode_www_form(params) if params.any?
+      uri
+    end
+
+    def execute_request(request)
+      request["PRIVATE-TOKEN"] = token
+      request["Accept"] = "application/json"
+
+      http = Net::HTTP.new(request.uri.host, request.uri.port)
+      http.use_ssl = request.uri.scheme == "https"
+
+      response = http.request(request)
+      Response.new(response)
     end
   end
 end
