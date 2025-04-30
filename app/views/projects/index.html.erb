@@ -1,3 +1,8 @@
+<%= form_with url: config_projects_path(config), method: :get do |f| %>
+  <%= f.text_field :search, value: params[:search], placeholder: "Search projects..." %>
+  <%= f.submit "Search" %>
+<% end %>
+
 <% projects.each do |project| %>
   <div>
     <%= link_to project.name, config_project_path(config, project.id) %>

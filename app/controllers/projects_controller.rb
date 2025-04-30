@@ -2,10 +2,15 @@ class ProjectsController < ApplicationController
   def index
     config = Config.find(params[:config_id])
 
-    page = params[:page] || 1
-
     client = config.api_client
-    response = client.get("api/v4/projects", page:)
+
+    response = client.get("api/v4/projects",
+      simple: true, # Returns only limited fields for each project
+      page: params[:page],
+      search: params[:search],
+      order_by: "name",
+      sort: "asc",
+    )
 
     if response.success?
       projects = Api::Project.parse_projects(response.body)
