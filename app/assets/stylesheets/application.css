@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

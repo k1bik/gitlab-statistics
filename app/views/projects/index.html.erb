@@ -1,5 +1,11 @@
 <%= form_with url: config_projects_path(config), method: :get do |f| %>
-  <%= f.text_field :search, value: params[:search], placeholder: "Search projects..." %>
+  <%= f.text_field :search,
+    value: params[:search],
+    autocomplete: "off",
+    inputmode: "search",
+    type: "search",
+    placeholder: "Search projects..."
+  %>
   <%= f.submit "Search" %>
 <% end %>
 
