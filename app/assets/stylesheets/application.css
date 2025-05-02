@@ -9,6 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+.main {
+  background-color: #f0f0f0;
+}
+
 .main-container {
   max-width: 1200px;
   margin: 0 auto;

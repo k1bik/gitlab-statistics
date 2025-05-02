@@ -22,7 +22,17 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="main">
+    <header class="header">
+      <div class="header-title-container">
+        <h1 class="header-title">GitLab</h1>
+        <span class="header-separator">|</span>
+        <span class="header-logo">
+          <%= image_tag "header-logo.svg", class: "header-logo" %>
+        </span>
+      </div>
+    </header>
+
     <div class="main-container">
       <%= yield %>
     </div>
