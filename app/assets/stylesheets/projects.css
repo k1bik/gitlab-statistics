@@ -1,0 +1,31 @@
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 24px;
+  background-color: #fff;
+}
+
+.project-item-name {
+  font-size: 18px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-item-separator {
+  margin: 0 4px;
+}
+
+.project-item-link {
+  padding-top: 2px;
+  text-decoration: none;
+  font-size: 12px;
+}

@@ -9,12 +9,19 @@
   <%= f.submit "Search" %>
 <% end %>
 
-<% projects.each do |project| %>
-  <div>
-    <%= link_to project.name, config_project_path(config, project.id) %>
-    <%= link_to "GitLab", project.url %>
-  </div>
-<% end %>
+<div class="project-list">
+  <% projects.each do |project| %>
+    <div class="project-item">
+      <p title="<%= project.name %>" class="project-item-name">
+        <%= project.name %>
+      </p>
+      <span class="project-item-separator">|</span>
+      <%= link_to "GitLab link", project.url, class: "project-item-link", target: "_blank" %>
+      <span class="project-item-separator">|</span>
+      <%= link_to "Stats", config_project_path(config, project.id), class: "project-item-link" %>
+    </div>
+  <% end %>
+</div>
 
 <div>
   <% if pagination.prev_page %>

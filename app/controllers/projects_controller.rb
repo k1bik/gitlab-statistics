@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
       page: params[:page],
       search: params[:search],
       order_by: "name",
+      per_page: 36,
       sort: "asc",
     )
 
