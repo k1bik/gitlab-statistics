@@ -9,7 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
- :root {
+:root {
   --orange: #CC5500;
 }
 
@@ -20,4 +20,11 @@
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
