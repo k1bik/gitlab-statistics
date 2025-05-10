@@ -4,24 +4,16 @@ module Api
       @response = response
     end
 
-    def first_page
-      1
-    end
+    def first_page = 1
 
-    def current_page
-      @response["X-Page"].presence&.to_i
-    end
+    def current_page = @response["X-Page"].presence&.to_i
 
-    def next_page
-      @response["X-Next-Page"].presence&.to_i
-    end
+    def next_page = @response["X-Next-Page"].presence&.to_i
 
-    def last_page
-      @response["X-Total-Pages"].presence&.to_i
-    end
+    def last_page = @response["X-Total-Pages"].presence&.to_i
 
-    def prev_page
-      @response["X-Prev-Page"].presence&.to_i
-    end
+    alias_method :total_pages, :last_page
+
+    def prev_page = @response["X-Prev-Page"].presence&.to_i
   end
 end

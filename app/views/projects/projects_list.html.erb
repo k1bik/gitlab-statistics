@@ -1,0 +1,52 @@
+<%= turbo_frame_tag :projects_list do %>
+  <div class="project-list">
+    <% projects.each do |project| %>
+      <div class="project-item">
+        <div class="project-item-name-container">
+          <p title="<%= project.name %>" class="project-item-name">
+            <%= project.name %>
+          </p>
+          <p title="<%= project.description %>" class="project-item-description">
+            <%= project.description %>
+          </p>
+        </div>
+        <span class="project-item-separator">|</span>
+        <%= link_to "GitLab link", project.url, class: "project-item-link", target: "_blank" %>
+        <span class="project-item-separator">|</span>
+        <%= link_to "Stats", config_project_path(config, project.id), class: "project-item-link", data: { turbo_frame: :_top } %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if pagination.total_pages > 1 %>
+    <div class="pagination-container">
+      <% if pagination.first_page && pagination.first_page != pagination.prev_page && pagination.first_page != pagination.current_page %>
+        <%= link_to pagination.first_page, config_projects_path(config, page: pagination.first_page), class: "pagination-link", data: { turbo_frame: :_top } %>
+      <% end %>
+
+      <% if pagination.prev_page && pagination.prev_page - 1 > pagination.first_page %>
+        <p>...</p>
+      <% end %>
+
+      <% if pagination.prev_page %>
+        <%= link_to pagination.prev_page, config_projects_path(config, page: pagination.prev_page), class: "pagination-link", data: { turbo_frame: :_top } %>
+      <% end %>
+
+      <p class="pagination-current-page">
+        <%= pagination.current_page %>
+      </p>
+
+      <% if pagination.next_page %>
+        <%= link_to pagination.next_page, config_projects_path(config, page: pagination.next_page), class: "pagination-link", data: { turbo_frame: :_top } %>
+      <% end %>
+
+      <% if pagination.next_page && pagination.last_page && pagination.next_page + 1 < pagination.last_page %>
+        <p>...</p>
+      <% end %>
+
+      <% if pagination.last_page && pagination.last_page != pagination.next_page && pagination.last_page != pagination.current_page %>
+        <%= link_to pagination.last_page, config_projects_path(config, page: pagination.last_page), class: "pagination-link", data: { turbo_frame: :_top } %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
