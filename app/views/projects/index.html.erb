@@ -31,12 +31,32 @@
   <% end %>
 </div>
 
-<div>
-  <% if pagination.prev_page %>
-    <%= link_to pagination.prev_page, config_projects_path(config, page: pagination.prev_page) %>
+<div class="pagination-container">
+  <% if pagination.first_page && pagination.first_page != pagination.prev_page && pagination.first_page != pagination.current_page %>
+    <%= link_to pagination.first_page, config_projects_path(config, page: pagination.first_page), class: "pagination-link" %>
   <% end %>
 
+  <% if pagination.prev_page && pagination.prev_page - 1 > pagination.first_page %>
+    <p>...</p>
+  <% end %>
+
+  <% if pagination.prev_page %>
+    <%= link_to pagination.prev_page, config_projects_path(config, page: pagination.prev_page), class: "pagination-link" %>
+  <% end %>
+
+  <p class="pagination-current-page">
+    <%= pagination.current_page %>
+  </p>
+
   <% if pagination.next_page %>
-    <%= link_to pagination.next_page, config_projects_path(config, page: pagination.next_page) %>
+    <%= link_to pagination.next_page, config_projects_path(config, page: pagination.next_page), class: "pagination-link" %>
+  <% end %>
+
+  <% if pagination.next_page && pagination.last_page && pagination.next_page + 1 < pagination.last_page %>
+    <p>...</p>
+  <% end %>
+
+  <% if pagination.last_page && pagination.last_page != pagination.next_page && pagination.last_page != pagination.current_page %>
+    <%= link_to pagination.last_page, config_projects_path(config, page: pagination.last_page), class: "pagination-link" %>
   <% end %>
 </div>

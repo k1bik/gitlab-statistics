@@ -1,0 +1,30 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.pagination-link {
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 100%;
+  border: 1px solid var(--orange);
+  color: #000;
+}
+
+.pagination-link:hover {
+  border-color: var(--orange);
+  background-color: var(--orange);
+  color: white;
+}
+
+.pagination-current-page {
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 100%;
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  color: white;
+}

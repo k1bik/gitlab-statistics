@@ -4,6 +4,10 @@ module Api
       @response = response
     end
 
+    def first_page
+      1
+    end
+
     def current_page
       @response["X-Page"].presence&.to_i
     end
@@ -12,7 +16,7 @@ module Api
       @response["X-Next-Page"].presence&.to_i
     end
 
-    def total_pages
+    def last_page
       @response["X-Total-Pages"].presence&.to_i
     end
 

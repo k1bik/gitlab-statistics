@@ -1,7 +1,8 @@
 .project-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  margin-bottom: 16px;
 }
 
 .project-item {
@@ -19,7 +20,7 @@
 
 .project-item-name {
   font-size: 18px;
-  max-width: 200px;
+  max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -27,7 +28,7 @@
 
 .project-item-description {
   font-size: 12px;
-  max-width: 200px;
+  max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
