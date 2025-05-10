@@ -6,6 +6,7 @@ module Api
     attribute :id
     attribute :name
     attribute :url
+    attribute :description
 
     def self.parse_projects(data)
       data = JSON.parse(data)
@@ -25,7 +26,8 @@ module Api
       new(
         id: data["id"],
         name: data["name"],
-        url: data["web_url"]
+        url: data["web_url"],
+        description: data["description"]
       )
     end
   end

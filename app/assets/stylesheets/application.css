@@ -9,6 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+ :root {
+  --orange: #CC5500;
+}
+
 .main {
   background-color: #f0f0f0;
 }

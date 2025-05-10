@@ -10,10 +10,23 @@
   padding: 12px;
   border-radius: 24px;
   background-color: #fff;
+  border: 1px solid transparent;
+}
+
+.project-item:hover {
+  border: 1px solid var(--orange);
 }
 
 .project-item-name {
   font-size: 18px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-item-description {
+  font-size: 12px;
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
