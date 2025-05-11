@@ -1,12 +1,18 @@
+# typed: strict
+
 class ProjectsController < ApplicationController
+  extend T::Sig
+
+  sig { void }
   def index
     config = get_config
 
-    respond_to do
-      it.html { render :index, locals: { config: } }
+    respond_to do |f|
+      f.html { render :index, locals: { config: } }
     end
   end
 
+  sig { void }
   def projects_list
     config = get_config
     client = config.api_client
@@ -24,14 +30,15 @@ class ProjectsController < ApplicationController
       projects = Api::Project.parse_projects(response.body)
       pagination = Api::Pagination.new(response.raw)
 
-      respond_to do
-        it.html { render :projects_list, locals: { projects:, pagination:, config: } }
+      respond_to do |f|
+        f.html { render :projects_list, locals: { projects:, pagination:, config: } }
       end
     else
       # handle bad response
     end
   end
 
+  sig { void }
   def members_size
     config = get_config
     client = config.api_client
@@ -44,14 +51,15 @@ class ProjectsController < ApplicationController
     if response.success?
       members_size = response.raw["X-Total"]&.to_i
 
-      respond_to do
-        it.html { render :members_size, locals: { members_size: } }
+      respond_to do |f|
+        f.html { render :members_size, locals: { members_size: } }
       end
     else
       # handle bad response
     end
   end
 
+  sig { void }
   def show
     config = get_config
     client = config.api_client
@@ -61,8 +69,8 @@ class ProjectsController < ApplicationController
     if response.success?
       project = Api::Project.parse_projects(response.body)
 
-      respond_to do
-        it.html { render :show, locals: { project:, config: } }
+      respond_to do |f|
+        f.html { render :show, locals: { project:, config: } }
       end
     else
       # handle bad response
@@ -71,6 +79,7 @@ class ProjectsController < ApplicationController
 
   private
 
+  sig { returns(Config) }
   def get_config
     Config.find(params[:config_id])
   end
