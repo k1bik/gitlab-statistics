@@ -11,7 +11,7 @@ class MembersController < ApplicationController
       pagination = Api::Pagination.new(response.raw)
 
       respond_to do
-        it.html { render :index, locals: {members:, pagination:, config:} }
+        it.html { render :index, locals: { members:, pagination:, config: } }
       end
     else
       # handle bad response

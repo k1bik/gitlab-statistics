@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
     config = get_config
 
     respond_to do
-      it.html { render :index, locals: {config:} }
+      it.html { render :index, locals: { config: } }
     end
   end
 
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
       pagination = Api::Pagination.new(response.raw)
 
       respond_to do
-        it.html { render :projects_list, locals: {projects:, pagination:, config:} }
+        it.html { render :projects_list, locals: { projects:, pagination:, config: } }
       end
     else
       # handle bad response
@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
       members_size = response.raw["X-Total"]&.to_i
 
       respond_to do
-        it.html { render :members_size, locals: {members_size:} }
+        it.html { render :members_size, locals: { members_size: } }
       end
     else
       # handle bad response
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
       project = Api::Project.parse_projects(response.body)
 
       respond_to do
-        it.html { render :show, locals: {project:, config:} }
+        it.html { render :show, locals: { project:, config: } }
       end
     else
       # handle bad response
