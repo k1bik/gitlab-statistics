@@ -12,7 +12,7 @@ class MembersController < ApplicationController
     response = client.get("api/v4/projects/#{params[:project_id]}/members/all", page:)
 
     if response.success?
-      members = Api::Member.parse_members(response.body)
+      members = Members::MemberParser.parse(response.body)
       pagination = Api::Pagination.new(response.raw)
 
       respond_to do |f|
