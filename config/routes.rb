@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :configs, only: %i[new create show] do
     resources :projects, only: %i[index show] do
       member do
-        get :members_size
+        get :members_preview
         get :merge_requests_size
       end
 

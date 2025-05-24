@@ -28,7 +28,7 @@ module GeneratedPathHelpersModule
   def configs_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def members_size_config_project_path(*args); end
+  def members_preview_config_project_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def merge_requests_size_config_project_path(*args); end

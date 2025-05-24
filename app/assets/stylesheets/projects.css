@@ -43,3 +43,32 @@
   text-decoration: none;
   font-size: 12px;
 }
+
+.members-preview-grid {
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.members-preview-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+
+.members-preview-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  font-size: small;
+}
+
+.members-preview-container {
+  width: max-content;
+  padding: 16px;
+  border-radius: 24px;
+  background-color: #fff
+}

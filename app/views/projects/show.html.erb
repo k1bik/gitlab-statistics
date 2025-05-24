@@ -1,9 +1,4 @@
-<%= project.id %>
-<%= project.name %>
-
-<%= link_to "members", config_project_members_path(config, project.id) %>
-
-<%= turbo_frame_tag :members_size, src: members_size_config_project_path(config, project.id), loading: :lazy do %>
+<%= turbo_frame_tag :members_preview, src: members_preview_config_project_path(config, project.id), loading: :lazy do %>
   <%= render "shared/loading_spinner" %>
 <% end %>
 
