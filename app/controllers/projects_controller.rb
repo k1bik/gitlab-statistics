@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   sig { void }
   def index
-    config = get_config
+    config = find_config
 
     respond_to do |f|
       f.html { render :index, locals: { config: } }
@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   sig { void }
   def projects_list
-    config = get_config
+    config = find_config
     client = config.api_client
 
     response = client.get("api/v4/projects",
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     )
 
     if response.success?
-      projects = Api::Project.parse_projects(response.body)
+      projects = Projects::ProjectParser.parse(response.body)
       pagination = Api::Pagination.new(response.raw)
 
       respond_to do |f|
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 
   sig { void }
   def members_size
-    config = get_config
+    config = find_config
     client = config.api_client
 
     response = client.get("api/v4/projects/#{params[:id]}/members/all",
@@ -61,13 +61,13 @@ class ProjectsController < ApplicationController
 
   sig { void }
   def show
-    config = get_config
+    config = find_config
     client = config.api_client
 
     response = client.get("api/v4/projects/#{params[:id]}")
 
     if response.success?
-      project = Api::Project.parse_projects(response.body)
+      project = Projects::ProjectParser.parse(response.body)
 
       respond_to do |f|
         f.html { render :show, locals: { project:, config: } }
@@ -80,7 +80,7 @@ class ProjectsController < ApplicationController
   private
 
   sig { returns(Config) }
-  def get_config
+  def find_config
     Config.find(params[:config_id])
   end
 end
