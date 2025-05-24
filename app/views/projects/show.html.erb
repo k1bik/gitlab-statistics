@@ -6,3 +6,7 @@
 <%= turbo_frame_tag :members_size, src: members_size_config_project_path(config, project.id), loading: :lazy do %>
   <%= render "shared/loading_spinner" %>
 <% end %>
+
+<%= turbo_frame_tag :merge_requests_size, src: merge_requests_size_config_project_path(config, project.id), loading: :lazy do %>
+  <%= render "shared/loading_spinner" %>
+<% end %>

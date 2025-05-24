@@ -14,10 +14,14 @@ Rails.application.routes.draw do
 
   resources :configs, only: %i[new create show] do
     resources :projects, only: %i[index show] do
-      resources :members, only: %i[index show]
+      member do
+        get :members_size
+        get :merge_requests_size
+      end
 
-      get :members_size, on: :member
       get :projects_list, on: :collection
+
+      resources :members, only: %i[index show]
     end
   end
 end

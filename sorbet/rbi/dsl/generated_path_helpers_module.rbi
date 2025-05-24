@@ -31,6 +31,9 @@ module GeneratedPathHelpersModule
   def members_size_config_project_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def merge_requests_size_config_project_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_config_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }

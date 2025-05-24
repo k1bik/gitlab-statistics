@@ -60,6 +60,27 @@ class ProjectsController < ApplicationController
   end
 
   sig { void }
+  def merge_requests_size
+    config = find_config
+    client = config.api_client
+
+    response = client.get("api/v4/projects/#{params[:id]}/merge_requests",
+      page: 1,
+      per_page: 1,
+    )
+
+    if response.success?
+      merge_requests_size = response.raw["X-Total"]&.to_i
+
+      respond_to do |f|
+        f.html { render :merge_requests_size, locals: { merge_requests_size: } }
+      end
+    else
+      # handle bad response
+    end
+  end
+
+  sig { void }
   def show
     config = find_config
     client = config.api_client
