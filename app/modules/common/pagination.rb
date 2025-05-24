@@ -1,6 +1,6 @@
 # typed: strict
 
-module Api
+module Common
   class Pagination
     extend T::Sig
 

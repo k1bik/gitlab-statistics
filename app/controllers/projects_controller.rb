@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
 
     if response.success?
       projects = Projects::ProjectParser.parse(response.body)
-      pagination = Api::Pagination.new(response.raw)
+      pagination = Common::Pagination.new(response.raw)
 
       respond_to do |f|
         f.html { render :projects_list, locals: { projects:, pagination:, config: } }

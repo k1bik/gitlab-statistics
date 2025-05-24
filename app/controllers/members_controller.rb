@@ -13,7 +13,7 @@ class MembersController < ApplicationController
 
     if response.success?
       members = Members::MemberParser.parse(response.body)
-      pagination = Api::Pagination.new(response.raw)
+      pagination = Common::Pagination.new(response.raw)
 
       respond_to do |f|
         f.html { render :index, locals: { members:, pagination:, config: } }
