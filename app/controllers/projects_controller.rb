@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
 
     response = client.get("api/v4/projects/#{params[:id]}/members/all",
       page: 1,
-      per_page: 10,
+      per_page: 8,
     )
 
     if response.success?

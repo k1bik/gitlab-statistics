@@ -23,11 +23,23 @@ module Projects
 
       sig { params(data: T::Hash[String, T.untyped]).returns(ProjectStruct) }
       def build_project(data)
+        if (owner = data["owner"])
+          project_owner = Projects::ProjectOwnerStruct.new(
+            id: owner["id"],
+            name: owner["name"],
+            web_url: owner["web_url"],
+            avatar_url: owner["avatar_url"]
+          )
+        end
+
         Projects::ProjectStruct.new(
           id: data["id"],
           name: data["name"],
           web_url: data["web_url"],
-          description: data["description"]
+          description: data["description"],
+          created_at: Common::Utils.format_date(data["created_at"]),
+          updated_at: Common::Utils.format_date(data["updated_at"] || data["created_at"]),
+          owner: project_owner
         )
       end
     end

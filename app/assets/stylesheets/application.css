@@ -28,3 +28,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.image-with-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    border-radius: 100%;
+    width: 36px;
+    height: 36px;
+  }
+}
