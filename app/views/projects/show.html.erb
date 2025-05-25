@@ -1,6 +1,12 @@
-<%= turbo_frame_tag :members_preview, src: members_preview_config_project_path(config, project.id), loading: :lazy do %>
-  <%= render "shared/loading_spinner" %>
-<% end %>
+<div class="members-preview-container">
+  <div class="members-preview-header">
+    <h3>Members</h3>
+    <%= link_to "See all", config_project_members_path(config, project.id), class: "members-preview-view-all", data: {turbo_frame: :_top} %>
+  </div>
+  <%= turbo_frame_tag :members_preview, class: "members-preview-grid", src: members_preview_config_project_path(config, project.id), loading: :lazy do %>
+    <%= render "shared/loading_spinner" %>
+  <% end %>
+</div>
 
 <%= turbo_frame_tag :merge_requests_size, src: merge_requests_size_config_project_path(config, project.id), loading: :lazy do %>
   <%= render "shared/loading_spinner" %>

@@ -42,7 +42,6 @@ class ProjectsController < ApplicationController
   def members_preview
     config = find_config
     client = config.api_client
-    project_id = params[:id]
 
     response = client.get("api/v4/projects/#{params[:id]}/members/all",
       page: 1,
@@ -53,7 +52,7 @@ class ProjectsController < ApplicationController
       members = Members::MemberParser.parse(response.body)
 
       respond_to do |f|
-        f.html { render :members_preview, locals: { members:, config:, project_id: } }
+        f.html { render :members_preview, locals: { members: } }
       end
     else
       # handle bad response

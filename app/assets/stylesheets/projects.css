@@ -48,7 +48,6 @@
   width: max-content;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   gap: 8px;
 }
 
@@ -67,7 +66,7 @@
 }
 
 .members-preview-container {
-  width: max-content;
+  width: 192px;
   padding: 16px;
   border-radius: 24px;
   background-color: #fff
